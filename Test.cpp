@@ -40,28 +40,9 @@ TEST_CASE("good input") {
     CHECK(note.read(0,0,0, Direction::Horizontal, 6)=="~~~~~~");
     note.erase(0,0,1,Direction::Horizontal, 6);
     CHECK(note.read(0,0,0, Direction::Horizontal, 11)=="~~~~~~mming");
-    note.write(0, 0 , 0, Direction::Horizontal, "hagai");
-    CHECK(note.read(0,0,0, Direction::Horizontal, 6) == "hagai~");
+    CHECK_THROWS(note.write(0, 0 , 0, Direction::Horizontal, "h"));
+    CHECK(note.read(0,0,0, Direction::Horizontal, 6) == "~~~~~~");
 
-}
-
-// TEST_CASE("negative numbers") {
-//     Notebook note;
-//     CHECK_THROWS(note.read(0, 0, -1, Direction::Horizontal, 4));
-//     CHECK_THROWS(note.read(0, -1, 0, Direction::Horizontal, 4));
-//     CHECK_THROWS(note.read(-1, 0, 0, Direction::Horizontal, 4));
-
-//     CHECK_THROWS(note.write(-1,0,0,Direction::Horizontal, "h"));
-//     CHECK_THROWS(note.write(0,-1,0,Direction::Horizontal, "h"));
-//     CHECK_THROWS(note.write(0,0,-1,Direction::Horizontal, "h"));
-
-//     CHECK_THROWS(note.erase(-1,0,0,Direction::Horizontal, 4));
-//     CHECK_THROWS(note.erase(0,-1,0,Direction::Horizontal, 4));
-//     CHECK_THROWS(note.erase(0,0,-1,Direction::Horizontal, 4));
-// }
-
-TEST_CASE("bad char") {
-    Notebook note;
 }
 
 TEST_CASE("override") {
